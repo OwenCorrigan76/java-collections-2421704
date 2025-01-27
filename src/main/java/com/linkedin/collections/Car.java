@@ -1,10 +1,24 @@
 package com.linkedin.collections;
 
+import java.util.Objects;
+
 public class Car {
 
 	private String make;
 
 	private String model;
+
+	@Override
+	public boolean equals(Object o) {
+		if (!(o instanceof Car)) return false;
+		Car car = (Car) o;
+		return Objects.equals(getMake(), car.getMake()) && Objects.equals(getModel(), car.getModel());
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(getMake(), getModel());
+	}
 
 	private int mileage;
 
