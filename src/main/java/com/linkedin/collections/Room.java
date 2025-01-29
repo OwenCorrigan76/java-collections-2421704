@@ -1,5 +1,7 @@
 package com.linkedin.collections;
 
+import java.util.Objects;
+
 public class Room {
 
 	private String name;
@@ -54,7 +56,19 @@ public class Room {
 		this.name = name;
 		this.type = type;
 	}
-	
+
+	@Override
+	public boolean equals(Object o) {
+		if (!(o instanceof Room)) return false;
+		Room room = (Room) o;
+		return getCapacity() == room.getCapacity() && Objects.equals(getName(), room.getName()) && Objects.equals(getType(), room.getType());
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(getName(), getType(), getCapacity());
+	}
+
 	@Override
 	public String toString() {
 		return "Room [name=" + name + ", type=" + type + ", capacity=" + capacity + ", rate=" + rate + "]";
