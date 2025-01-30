@@ -29,9 +29,7 @@ public class RoomService {
     }
 
     public void removeRoom(Room room) {
-
         // 6. Remove the provided Room from the Room Inventory
         this.inventory.remove(room);
     }
-
 }
